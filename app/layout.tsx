@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Amanchain Global — Move value forward',
+  description: 'The payment layer for a borderless economy. Fast settlement, transparent fees, and global confidence.',
   generator: 'v0.app',
   icons: {
     icon: [
