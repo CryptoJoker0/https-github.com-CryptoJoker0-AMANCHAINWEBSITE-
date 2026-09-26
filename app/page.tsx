@@ -19,8 +19,6 @@ const skills = ['React', 'Next.js', 'JavaScript', 'TypeScript', 'HTML', 'CSS', '
 const projects = [
   { name: 'BarbieFun', category: 'Launchpad / Marketplace / Gaming', description: 'A multi-chain launchpad, NFT marketplace and gaming ecosystem owned by AMANCHAIN GLOBAL and built on X1.', tag: 'Owned by AMANCHAIN GLOBAL', accent: 'from-emerald-300/20 via-emerald-400/5 to-transparent' },
   { name: 'Africa X1 NFT', category: 'NFT project', description: 'An NFT project built around the X1 ecosystem, connecting identity, art and blockchain technology.', tag: 'X1 ecosystem', accent: 'from-violet-400/20 via-violet-400/5 to-transparent' },
-  { name: 'KickoffX', category: 'Digital platform', description: 'A digital gaming and betting platform in the AMANCHAIN GLOBAL project portfolio.', tag: 'Digital product', accent: 'from-sky-400/20 via-sky-400/5 to-transparent' },
-  { name: 'RobinPaw', category: 'Web3 project', description: 'A Web3 project connected to the Robinhood ecosystem, with its own evolving project identity.', tag: 'Web3 build', accent: 'from-fuchsia-400/20 via-fuchsia-400/5 to-transparent' },
 ]
 
 export default function Page() {
