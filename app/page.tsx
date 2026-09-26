@@ -1,69 +1,75 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowRight, Check, ChevronDown, Copy, Menu, ShieldCheck, Sparkles, X } from 'lucide-react'
+import { ArrowUpRight, Check, Code2, Globe2, Menu, MessageCircle, Network, Send, Sparkles, Terminal, X, Zap } from 'lucide-react'
 
 const logoUrl = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_20260926_180918_704-KDi8LnLNnCaijYxkMRbvDj7nnHmGj8.jpg'
 
+const services = [
+  ['Software engineering', 'Modern web applications, backend systems, APIs, dashboards and digital platforms.', Code2],
+  ['Web3 & blockchain', 'Blockchain-connected products, wallet integrations, NFT platforms and Web3 experiences.', Network],
+  ['Product development', 'Turning a concept into a usable product from architecture through deployment.', Zap],
+  ['Digital brand building', 'Technology brands, communities and digital experiences built around real products.', Globe2],
+  ['Technical consulting', 'Practical guidance across architecture, integrations, development and execution.', Terminal],
+  ['Project collaboration', 'Working with founders, developers, communities and teams on ambitious products.', MessageCircle],
+] as const
+
+const skills = ['React', 'Next.js', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'Node.js', 'Express', 'REST APIs', 'Authentication', 'Databases', 'API integrations', 'Blockchain integration', 'Wallet integration', 'NFT systems', 'RPC', 'Solana / SVM', 'X1 Blockchain', 'Admin dashboards', 'Payment systems', 'Referral systems', 'Automation', 'Deployment']
+
+const projects = [
+  { name: 'BarbieFun', category: 'Launchpad / Marketplace / Gaming', description: 'A multi-chain launchpad, NFT marketplace and gaming ecosystem owned by AMANCHAIN GLOBAL and built on X1.', tag: 'Owned by AMANCHAIN GLOBAL', accent: 'from-emerald-300/20 via-emerald-400/5 to-transparent' },
+  { name: 'Africa X1 NFT', category: 'NFT project', description: 'An NFT project built around the X1 ecosystem, connecting identity, art and blockchain technology.', tag: 'X1 ecosystem', accent: 'from-violet-400/20 via-violet-400/5 to-transparent' },
+  { name: 'KickoffX', category: 'Digital platform', description: 'A digital gaming and betting platform in the AMANCHAIN GLOBAL project portfolio.', tag: 'Digital product', accent: 'from-sky-400/20 via-sky-400/5 to-transparent' },
+  { name: 'RobinPaw', category: 'Web3 project', description: 'A Web3 project connected to the Robinhood ecosystem, with its own evolving project identity.', tag: 'Web3 build', accent: 'from-fuchsia-400/20 via-fuchsia-400/5 to-transparent' },
+]
+
 export default function Page() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [copied, setCopied] = useState(false)
-
-  function copyAddress() {
-    navigator.clipboard?.writeText('0xAC7A...9F42')
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 1800)
-  }
-
+  const closeMenu = () => setMenuOpen(false)
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
-      <div className="pointer-events-none fixed inset-0 -z-0 opacity-70 [background:radial-gradient(circle_at_72%_12%,oklch(0.52_0.24_329_/_0.22),transparent_26%),radial-gradient(circle_at_18%_58%,oklch(0.38_0.18_300_/_0.18),transparent_28%)]" />
-      <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
-        <a href="#top" className="flex items-center gap-3" aria-label="Amanchain home">
-          <img src={logoUrl} alt="Amanchain Global neon logo" className="size-11 rounded-full object-cover ring-1 ring-primary/40" />
-          <span className="font-mono text-sm font-bold tracking-[0.2em] text-foreground">AMANCHAIN<span className="text-primary">.</span></span>
-        </a>
-        <div className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-          <a className="transition-colors hover:text-foreground" href="#how-it-works">How it works</a>
-          <a className="transition-colors hover:text-foreground" href="#security">Security</a>
-          <a className="transition-colors hover:text-foreground" href="#network">Network</a>
-          <a href="#pay" className="rounded-full border border-border bg-card/80 px-4 py-2 text-foreground transition hover:border-primary/70 hover:bg-primary/10">Open wallet <ArrowRight className="ml-2 inline size-4" /></a>
-        </div>
-        <button className="rounded-lg border border-border p-2 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'}>
-          {menuOpen ? <X /> : <Menu />}
-        </button>
-      </nav>
-      {menuOpen && <div className="relative z-10 flex flex-col gap-4 border-y border-border bg-card/95 px-5 py-5 text-sm md:hidden"><a href="#how-it-works" onClick={() => setMenuOpen(false)}>How it works</a><a href="#security" onClick={() => setMenuOpen(false)}>Security</a><a href="#network" onClick={() => setMenuOpen(false)}>Network</a></div>}
-
-      <section id="top" className="relative z-10 mx-auto grid max-w-7xl gap-14 px-5 pb-20 pt-12 sm:px-8 md:pt-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-10 lg:pb-28">
-        <div>
-          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary"><Sparkles className="size-3.5" /> Global payments, reimagined</div>
-          <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-[-0.06em] sm:text-7xl">Move money with <span className="bg-gradient-to-r from-fuchsia-400 via-primary to-violet-400 bg-clip-text text-transparent">more certainty.</span></h1>
-          <p className="mt-7 max-w-xl text-lg leading-8 text-muted-foreground">Amanchain is the payment layer for a borderless economy. Fast settlement, transparent fees, and the confidence to build anywhere.</p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row"><a href="#pay" className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3.5 font-semibold text-primary-foreground shadow-[0_0_35px_oklch(0.65_0.28_330_/_0.3)] transition hover:scale-[1.02]">Start a payment <ArrowRight className="ml-2 size-4" /></a><a href="#how-it-works" className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3.5 font-semibold transition hover:border-primary/60 hover:bg-primary/5">Explore the network</a></div>
-          <div className="mt-12 flex flex-wrap gap-x-8 gap-y-4 text-sm text-muted-foreground"><span><strong className="text-foreground">&lt; 2 sec</strong> settlement</span><span><strong className="text-foreground">160+</strong> countries</span><span><strong className="text-foreground">99.99%</strong> uptime</span></div>
-        </div>
-        <div id="pay" className="relative mx-auto w-full max-w-md lg:ml-auto">
-          <div className="absolute -inset-10 rounded-full bg-primary/15 blur-3xl" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-primary/25 bg-card/80 p-4 shadow-2xl backdrop-blur-xl">
-            <div className="rounded-[1.5rem] border border-border bg-background/70 p-6">
-              <div className="flex items-center justify-between"><span className="text-sm font-medium text-muted-foreground">Your balance</span><span className="rounded-full bg-emerald-400/10 px-2.5 py-1 text-xs text-emerald-300">● Live</span></div>
-              <p className="mt-3 text-4xl font-semibold tracking-tight">$24,890<span className="text-xl text-muted-foreground">.42</span></p>
-              <div className="mt-6 h-24 overflow-hidden rounded-xl bg-gradient-to-br from-primary/20 via-violet-500/10 to-transparent"><svg viewBox="0 0 400 100" className="h-full w-full" preserveAspectRatio="none" aria-hidden="true"><path d="M0 76 C40 62, 55 78, 90 52 S130 65, 160 43 S210 60, 242 30 S290 51, 325 20 S370 30, 400 8" fill="none" stroke="oklch(0.75 0.22 330)" strokeWidth="3" /><path d="M0 76 C40 62, 55 78, 90 52 S130 65, 160 43 S210 60, 242 30 S290 51, 325 20 S370 30, 400 8 V100 H0Z" fill="url(#fill)" opacity=".25" /><defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop stopColor="oklch(0.7 0.25 330)" /><stop offset="1" stopColor="transparent" /></linearGradient></defs></svg></div>
-              <div className="mt-6 flex items-center justify-between border-t border-border pt-5 text-sm"><span className="text-muted-foreground">Available to send</span><span className="font-semibold">$18,420.00</span></div>
-              <button onClick={copyAddress} className="mt-5 flex w-full items-center justify-between rounded-xl border border-border bg-muted/50 px-4 py-3 text-left text-sm transition hover:border-primary/50"><span><span className="block text-xs text-muted-foreground">Wallet address</span>0xAC7A...9F42</span>{copied ? <Check className="size-4 text-emerald-300" /> : <Copy className="size-4 text-muted-foreground" />}</button>
-            </div>
+      <div className="pointer-events-none fixed inset-0 -z-0 opacity-70 [background:radial-gradient(circle_at_75%_0%,oklch(0.42_0.16_160_/_0.12),transparent_28%),radial-gradient(circle_at_10%_35%,oklch(0.35_0.12_300_/_0.14),transparent_26%)]" />
+      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-xl">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-10" aria-label="Main navigation">
+          <a href="#top" className="flex items-center gap-3" onClick={closeMenu}>
+            <img src={logoUrl} alt="AMANCHAIN GLOBAL logo" className="size-10 rounded-full object-cover ring-1 ring-primary/50" />
+            <span className="font-mono text-xs font-bold tracking-[0.2em] sm:text-sm">AMANCHAIN <span className="text-primary">GLOBAL</span></span>
+          </a>
+          <div className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
+            {['About', 'Projects', 'Services', 'Community'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} className="transition-colors hover:text-foreground">{item}</a>)}
+            <a href="/pay" className="rounded-full bg-foreground px-4 py-2 font-semibold text-background transition hover:bg-primary hover:text-primary-foreground">Work with me <ArrowUpRight className="ml-1 inline size-4" /></a>
           </div>
+          <button className="rounded-lg border border-border p-2 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'}>{menuOpen ? <X /> : <Menu />}</button>
+        </nav>
+        {menuOpen && <div className="flex flex-col gap-4 border-t border-border bg-background px-5 py-5 text-sm md:hidden">{['About', 'Projects', 'Services', 'Community'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} onClick={closeMenu}>{item}</a>)}<a href="/pay" className="font-semibold text-primary">Work with me <ArrowUpRight className="ml-1 inline size-4" /></a></div>}
+      </header>
+
+      <section id="top" className="relative z-10 mx-auto grid max-w-7xl gap-12 px-5 pb-24 pt-16 sm:px-8 md:pt-24 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:px-10">
+        <div>
+          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1.5 text-xs font-semibold text-emerald-300"><span className="size-2 rounded-full bg-emerald-300 shadow-[0_0_12px_#6ee7b7]" /> AVAILABLE FOR PROJECTS & COLLABORATIONS</div>
+          <h1 className="max-w-4xl text-5xl font-semibold leading-[.95] tracking-[-.065em] sm:text-7xl lg:text-8xl">BUILDING THE FUTURE, <span className="text-primary">ONE PRODUCT</span> AT A TIME.</h1>
+          <p className="mt-8 max-w-xl text-lg leading-8 text-muted-foreground">I&apos;m AMANCHAIN GLOBAL — a software engineer, Web3 builder and digital product developer creating technology, blockchain products and online experiences.</p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row"><a href="/pay" className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3.5 font-semibold text-primary-foreground shadow-[0_0_32px_oklch(0.72_0.2_160_/_0.18)] transition hover:scale-[1.02]">Work with me <ArrowUpRight className="ml-2 size-4" /></a><a href="#projects" className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3.5 font-semibold transition hover:border-primary/60 hover:bg-primary/5">Explore my projects <ArrowUpRight className="ml-2 size-4" /></a></div>
+          <a href="/links" className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition hover:text-foreground"><Send className="size-4 text-primary" /> Follow AMANCHAIN GLOBAL</a>
         </div>
+        <div className="relative mx-auto w-full max-w-md lg:ml-auto"><div className="absolute -inset-10 rounded-full bg-emerald-400/10 blur-3xl" /><div className="relative overflow-hidden rounded-[2rem] border border-border bg-card/70 p-3 shadow-2xl backdrop-blur-xl"><div className="aspect-square overflow-hidden rounded-[1.5rem] border border-primary/20 bg-black"><img src={logoUrl} alt="AMANCHAIN GLOBAL neon emblem" className="h-full w-full object-cover opacity-90" /></div><div className="flex items-center justify-between px-3 pb-2 pt-4 text-xs text-muted-foreground"><span>AMANCHAIN GLOBAL / 01</span><span className="text-emerald-300">BUILDING IN PUBLIC</span></div></div></div>
       </section>
 
-      <section id="how-it-works" className="relative z-10 border-y border-border bg-card/30"><div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-10"><div><p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Built for movement</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em]">One network.<br />Every possibility.</h2></div><div className="grid gap-8 sm:grid-cols-3"><Feature number="01" title="Connect" text="Link your wallet or business in minutes." /><Feature number="02" title="Move" text="Send value globally with clear pricing." /><Feature number="03" title="Grow" text="Build products on open rails." /></div></div></section>
-      <section id="security" className="relative z-10 mx-auto grid max-w-7xl gap-8 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:px-10"><div className="rounded-[1.75rem] border border-border bg-card/60 p-8"><ShieldCheck className="size-8 text-primary" /><h2 className="mt-10 text-3xl font-semibold tracking-tight">Security that never takes a day off.</h2><p className="mt-4 leading-7 text-muted-foreground">Your assets are protected by multi-layer controls, real-time monitoring, and infrastructure designed for the moments that matter.</p><a href="#network" className="mt-8 inline-flex items-center text-sm font-semibold text-primary">See our approach <ArrowRight className="ml-2 size-4" /></a></div><div id="network" className="rounded-[1.75rem] border border-primary/20 bg-gradient-to-br from-primary/15 to-violet-500/5 p-8"><p className="text-sm text-muted-foreground">Network volume</p><p className="mt-3 text-5xl font-semibold">$8.4B<span className="text-lg text-primary">+</span></p><p className="mt-2 text-sm text-muted-foreground">processed across Amanchain rails</p><div className="mt-14 flex items-center gap-3 text-sm"><span className="size-2 rounded-full bg-emerald-300 shadow-[0_0_12px_#6ee7b7]" />All systems operational <ChevronDown className="ml-auto size-4 rotate-[-90deg]" /></div></div></section>
-      <footer className="relative z-10 border-t border-border"><div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 text-sm text-muted-foreground sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10"><span>© 2026 Amanchain Global</span><span>Move value. Move forward.</span></div></footer>
+      <section id="about" className="border-y border-border bg-card/25"><div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[.75fr_1.25fr] lg:px-10"><div><p className="eyebrow">WHO IS AMANCHAIN GLOBAL?</p><h2 className="section-title">Ideas become real when you ship.</h2></div><div className="max-w-2xl space-y-5 text-lg leading-8 text-muted-foreground"><p>AMANCHAIN GLOBAL combines software engineering, Web3 development, blockchain technology, product development, community building, digital marketing and entrepreneurship.</p><p>Focused on turning ideas into functional digital products while building communities and brands around emerging technology.</p><p className="border-l-2 border-primary pl-5 text-foreground">AMANCHAIN GLOBAL owns BarbieFun Launchpad, a multi-chain project built on X1.</p></div></div></section>
+
+      <section id="services" className="relative z-10 mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-10"><p className="eyebrow">WHAT I DO</p><div className="mt-4 flex flex-col justify-between gap-6 md:flex-row md:items-end"><h2 className="section-title max-w-xl">Technology with a reason to exist.</h2><p className="max-w-sm text-muted-foreground">From first architecture to final deployment, I build useful digital experiences that can move forward.</p></div><div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{services.map(([title, text, Icon]) => <article key={title} className="group rounded-2xl border border-border bg-card/45 p-6 transition hover:-translate-y-1 hover:border-primary/50 hover:bg-card/80"><Icon className="size-6 text-primary" /><h3 className="mt-8 text-lg font-semibold">{title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p></article>)}</div></section>
+
+      <section className="border-y border-border bg-card/25"><div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10"><div className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="eyebrow">THE TOOLKIT</p><h2 className="section-title mt-4">Skills for building end to end.</h2></div><p className="max-w-sm text-sm leading-6 text-muted-foreground">A practical stack across development, backend systems, Web3 and product delivery.</p></div><div className="mt-10 flex flex-wrap gap-2">{skills.map((skill) => <span key={skill} className="rounded-full border border-border bg-background/70 px-3 py-2 text-sm text-muted-foreground transition hover:border-primary/50 hover:text-foreground">{skill}</span>)}</div></div></section>
+
+      <section id="projects" className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-10"><div className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="eyebrow">FEATURED PROJECTS</p><h2 className="section-title mt-4">Projects I&apos;m building.</h2></div><p className="max-w-sm text-muted-foreground">Technology is best explained by what you actually build.</p></div><div className="mt-12 grid gap-5 md:grid-cols-2">{projects.map((project, index) => <article key={project.name} className={`group relative min-h-[300px] overflow-hidden rounded-3xl border border-border bg-gradient-to-br ${project.accent} p-7 transition hover:-translate-y-1 hover:border-primary/50`}><div className="absolute right-6 top-6 font-mono text-xs text-muted-foreground">0{index + 1}</div><div className="flex h-full flex-col justify-between"><div><span className="rounded-full border border-border/80 bg-background/40 px-3 py-1.5 text-xs text-muted-foreground">{project.tag}</span><h3 className="mt-12 text-3xl font-semibold tracking-tight">{project.name}</h3><p className="mt-3 max-w-md leading-7 text-muted-foreground">{project.description}</p></div><div className="mt-8 flex items-center justify-between"><span className="text-xs uppercase tracking-[.16em] text-primary">{project.category}</span><a href="#contact" className="inline-flex items-center text-sm font-semibold">Explore project <ArrowUpRight className="ml-1 size-4" /></a></div></div></article>)}</div></section>
+
+      <section className="border-y border-border bg-card/25"><div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10"><p className="eyebrow">CURRENTLY BUILDING</p><h2 className="section-title mt-4">What I&apos;m building now.</h2><div className="mt-10 rounded-3xl border border-primary/30 bg-primary/5 p-6 md:flex md:items-center md:justify-between md:p-8"><div><div className="flex flex-wrap items-center gap-3"><h3 className="text-2xl font-semibold">BarbieFun</h3><span className="rounded-full bg-emerald-400/10 px-3 py-1 text-xs text-emerald-300">BUILDING</span></div><p className="mt-3 text-muted-foreground">Multi-chain Launchpad / NFT Marketplace / Gaming Ecosystem</p><p className="mt-2 text-sm text-muted-foreground">Owned by AMANCHAIN GLOBAL · Built on X1</p></div><a href="#projects" className="mt-6 inline-flex items-center font-semibold text-primary md:mt-0">Explore BarbieFun <ArrowUpRight className="ml-2 size-4" /></a></div></div></section>
+
+      <section id="community" className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-10"><div className="grid gap-8 lg:grid-cols-2"><div><p className="eyebrow">BUILT IN PUBLIC</p><h2 className="section-title mt-4">The work is the proof.</h2><p className="mt-6 max-w-lg text-lg leading-8 text-muted-foreground">Follow projects, experiments and development updates as AMANCHAIN GLOBAL builds in technology and Web3.</p><div className="mt-8 flex flex-wrap gap-3"><a href="/links" className="rounded-full border border-border px-5 py-3 text-sm font-semibold transition hover:border-primary/60">View all links</a><a href="https://github.com" className="rounded-full border border-border px-5 py-3 text-sm font-semibold transition hover:border-primary/60"><Code2 className="mr-2 inline size-4" /> GitHub</a></div></div><div className="rounded-3xl border border-border bg-card/50 p-7"><p className="text-sm text-muted-foreground">BUILD → LEARN → SHIP → IMPROVE</p><div className="mt-8 grid gap-5 sm:grid-cols-2">{['Projects', 'GitHub', 'X', 'Telegram'].map((item) => <div key={item} className="flex items-center gap-3 border-b border-border pb-4"><Check className="size-4 text-primary" /><span>{item}</span></div>)}</div></div></div></section>
+
+      <section id="contact" className="mx-5 mb-10 rounded-[2rem] border border-primary/30 bg-gradient-to-br from-primary/10 via-card/60 to-emerald-400/5 px-6 py-16 text-center sm:mx-8 lg:mx-auto lg:max-w-7xl lg:px-10"><p className="eyebrow">WORK WITH AMANCHAIN GLOBAL</p><h2 className="mx-auto mt-4 max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl">Have an idea worth building?</h2><p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">Let&apos;s turn it into something real.</p><a href="/pay" className="mt-8 inline-flex items-center rounded-full bg-primary px-6 py-3.5 font-semibold text-primary-foreground">Start a project <ArrowUpRight className="ml-2 size-4" /></a></section>
+
+      <footer className="border-t border-border"><div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-sm text-muted-foreground sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10"><span>© 2026 AMANCHAIN GLOBAL</span><span>Building technology, Web3 products and digital experiences.</span><a href="/links" className="text-foreground hover:text-primary">Official link hub <ArrowUpRight className="ml-1 inline size-4" /></a></div></footer>
     </main>
   )
-}
-
-function Feature({ number, title, text }: { number: string; title: string; text: string }) {
-  return <div><span className="font-mono text-xs text-primary">{number}</span><h3 className="mt-4 text-lg font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p></div>
 }

@@ -3,8 +3,23 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Amanchain Global — Move value forward',
-  description: 'The payment layer for a borderless economy. Fast settlement, transparent fees, and global confidence.',
+  metadataBase: new URL('https://amanchain.global'),
+  title: 'AMANCHAIN GLOBAL | Software Engineer, Web3 Builder & Blockchain Developer',
+  description: 'AMANCHAIN GLOBAL is a software engineer and Web3 builder creating digital products, blockchain applications, online platforms and technology projects, including BarbieFun Launchpad, a multi-chain project built on X1.',
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: 'AMANCHAIN GLOBAL | Software Engineer, Web3 Builder & Blockchain Developer',
+    description: 'Building technology, Web3 products and digital experiences.',
+    type: 'website',
+    siteName: 'AMANCHAIN GLOBAL',
+    images: ['https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_20260926_180918_704-KDi8LnLNnCaijYxkMRbvDj7nnHmGj8.jpg'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AMANCHAIN GLOBAL | Software Engineer, Web3 Builder & Blockchain Developer',
+    description: 'Building technology, Web3 products and digital experiences.',
+    images: ['https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_20260926_180918_704-KDi8LnLNnCaijYxkMRbvDj7nnHmGj8.jpg'],
+  },
   generator: 'v0.app',
   icons: {
     icon: [
