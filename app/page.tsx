@@ -34,12 +34,12 @@ export default function Page() {
             <span className="font-mono text-xs font-bold tracking-[0.2em] sm:text-sm">AMANCHAIN <span className="text-primary">GLOBAL</span></span>
           </a>
           <div className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
-            {['About', 'Projects', 'Services', 'Community'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} className="transition-colors hover:text-foreground">{item}</a>)}
+            {['About', 'Projects', 'Services', 'Community'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} className="transition-colors hover:text-foreground">{item}</a>)}<a href="/applications" className="transition-colors hover:text-foreground">Applications</a>
             <a href="/pay" className="rounded-full bg-foreground px-4 py-2 font-semibold text-background transition hover:bg-primary hover:text-primary-foreground">Work with me <ArrowUpRight className="ml-1 inline size-4" /></a>
           </div>
           <button className="rounded-lg border border-border p-2 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'}>{menuOpen ? <X /> : <Menu />}</button>
         </nav>
-        {menuOpen && <div className="flex flex-col gap-4 border-t border-border bg-background px-5 py-5 text-sm md:hidden">{['About', 'Projects', 'Services', 'Community'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} onClick={closeMenu}>{item}</a>)}<a href="/pay" className="font-semibold text-primary">Work with me <ArrowUpRight className="ml-1 inline size-4" /></a></div>}
+        {menuOpen && <div className="flex flex-col gap-4 border-t border-border bg-background px-5 py-5 text-sm md:hidden">{['About', 'Projects', 'Services', 'Community'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} onClick={closeMenu}>{item}</a>)}<a href="/applications" onClick={closeMenu}>Applications</a><a href="/pay" className="font-semibold text-primary">Work with me <ArrowUpRight className="ml-1 inline size-4" /></a></div>}
       </header>
 
       <section id="top" className="relative z-10 mx-auto grid max-w-7xl gap-12 px-5 pb-24 pt-16 sm:px-8 md:pt-24 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:px-10">
